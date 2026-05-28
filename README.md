@@ -8,7 +8,7 @@ The project combines spatial data engineering, econometric panel models, machine
 
 ## Architecture
 
-![Project architecture](results/project_architecture.png)
+![Project architecture](results/Project_Overview.png)
 
 End-to-end analytical workflow integrating climate acquisition, territorial harmonization, econometric modeling, machine learning, and spatial network analysis.
 
