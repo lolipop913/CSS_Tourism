@@ -154,7 +154,9 @@ The econometric analysis includes:
 
 Non-linear temperature effects are estimated through:
 
+$$
 T^* = -\frac{\beta_1}{2\beta_2}
+$$
 
 ---
 
@@ -228,10 +230,9 @@ Includes:
 
 ### Random Forest
 
-* OOB R² ≈ 0.66
-* RMSE ≈ 2.44
+Random Forest models confirm that climate variables contribute to explaining regional tourism intensity, although socioeconomic factors such as GDP and population remain structurally dominant predictors across European regions.
 
-The predictive performance remains good, although tourism intensity is still largely dominated by economic indicators.
+Model performance: OOB R² ≈ 0.66 ; RMSE ≈ 2.44
 
 ---
 
