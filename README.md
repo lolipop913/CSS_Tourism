@@ -1,227 +1,360 @@
-\# Climate and Tourism in Europe  
-\### Are Cooler Destinations Becoming More Attractive?
+# Climate and Tourism in Europe
 
-\*\*Henri Vasserot\*\*  
-MSc Data Science — University of Trento  
-Computational Social Science (CAMPEDELLI)  
+Interactive computational social science project exploring the relationships between climate conditions, tourism activity, territorial heterogeneity, and spatial structures across European NUTS2 regions.
 
-\---
+The project combines spatial data engineering, econometric panel models, machine learning techniques, and exploratory spatial network analysis to investigate tourism dynamics in Europe between 2010 and 2023.
 
-\## 📌 Overview
+---
 
-This project investigates the relationship between climate conditions and tourism activity across European regions (NUTS2 level) over the period \*\*2010–2023\*\*.
+## Architecture
 
-The analysis combines \*\*econometric panel data methods\*\* and \*\*machine learning techniques\*\* to explore both linear and non-linear relationships between climate variables (temperature, precipitation) and tourism flows.
+![Project architecture](results/project_architecture.png)
 
-The study adopts a \*\*relational (non-causal) perspective\*\*, focusing on identifying robust statistical patterns rather than causal effects.
+End-to-end analytical workflow integrating climate acquisition, territorial harmonization, econometric modeling, machine learning, and spatial network analysis.
 
-\---
+---
 
-## 🔗 Quick Access
+## Overview
 
-- 📄 Paper: paper/paper.pdf  
-- 🎤 Presentation: presentation/presentation.pdf  
-- 📦 Data: data/processed/final_dataset_nuts2_2010_2023.csv  
-- ⚙️ Code: code/  
+This project investigates the relationship between climate conditions and tourism activity across European regions at the NUTS2 level over the period 2010–2023.
 
-\---
+The analysis combines:
 
-\## 🎯 Research Question
+* panel econometric models,
+* machine learning techniques,
+* geospatial processing,
+* and exploratory spatial network analysis.
 
-> \*What is the relationship between climate conditions and tourism activity across European regions over time?\*
+The project adopts an observational and non-causal perspective focused on identifying robust spatial and statistical patterns within the European tourism system.
 
-A secondary motivation explores whether:
+---
 
-> \*Tourism demand may shift toward cooler regions in a context of rising temperatures.\*
+## Research Questions
 
-\---
+Main research question:
 
-\## 🧠 Key Findings
-\- Temperature has a significant positive within-region effect on tourism activity  
+> What is the relationship between climate conditions and tourism activity across European regions over time?
 
-\- Precipitation does not exhibit a robust relationship  
+Secondary research question:
 
-\- Evidence of non-linearity (inverted U-shape) in econometric models  
+> Are cooler European destinations becoming relatively more attractive in a context of rising temperatures?
 
-\- Machine learning suggests a weaker, mostly monotonic relationship  
+---
 
-\- GDP is the dominant driver of tourism across all specifications  
+## Methodological Overview
 
-\- No strong empirical evidence of a systematic shift toward cooler destinations  
+The analytical workflow combines:
 
-Overall:  
-Climate matters, but remains secondary to structural economic factors
+* Eurostat regional tourism indicators,
+* ERA5 climate datasets,
+* geospatial territorial harmonization,
+* panel econometric models,
+* machine learning prediction,
+* spatial network analysis.
 
-\---
+The project investigates:
 
-\## 🗂️ Data
-\### Sources
+* climate-tourism relationships,
+* regional heterogeneity,
+* non-linear temperature effects,
+* territorial segmentation,
+* spatial connectivity structures.
 
-\- Eurostat  
+---
 
-&#x20; - Tourism: `tour\_occ\_nin2`  
+## Data Sources
 
-&#x20; - GDP: `nama\_10r\_2gdp`  
+### Eurostat
 
-&#x20; - Population: `demo\_r\_pjanaggr3`  
+Regional socio-economic indicators:
 
-\- ERA5 (Copernicus / Open-Meteo)  
+* Tourism nights (`tour_occ_nin2`)
+* GDP (`nama_10r_2gdp`)
+* Population (`demo_r_pjanaggr3`)
 
-&#x20; - Temperature (2m)  
+### ERA5 Climate Data
 
-&#x20; - Precipitation  
+Climate indicators:
 
-\### Construction
+* 2m temperature
+* Total precipitation
 
-\- Spatial aggregation: grid → NUTS2 regions  
+Climate data were spatially aggregated from ERA5 grids to European NUTS2 regions.
 
-\- Temporal aggregation: monthly → annual  
+---
 
+## Final Dataset
 
-Final dataset:
+Final harmonized panel dataset:
 
-\- 273 regions  
+* 273 NUTS2 regions
+* 2010–2023
+* ~3,200 observations
 
-\- 2010–2023  
+Dataset available in:
 
-\- \~3,200 observations  
-
-📁 Available here:
-
+```text
 data/processed/final_dataset_nuts2_2010_2023.csv
+```
 
+Raw ERA5 climate files are not included due to storage limitations.
 
-⚠️ Raw ERA5 data is not included due to file size.
+---
 
-\---
+## Analytical Workflow
 
-\## ⚙️ Methodology
-\### Econometric Approach
+### 01 — Eurostat Data Acquisition
 
-\- OLS with time fixed effects  
+* tourism indicators
+* GDP extraction
+* population harmonization
 
-\- Panel fixed effects (region + year)  
+### 02 — Climate Data Processing
 
-\- Non-linear specification with quadratic term  
+* ERA5 acquisition
+* annual climate aggregation
+* spatial joins with NUTS2 regions
 
+### 03 — Dataset Construction
 
-Turning point:
+* territorial harmonization
+* panel dataset construction
+* missing value handling
 
-T* = -β₁ / (2β₂)
+### 04 — Econometric Analysis
 
-\---
+* OLS models
+* fixed effects panel models
+* non-linear specifications
 
-\### Machine Learning
+### 05 — Machine Learning Analysis
 
-\- Decision Tree (interpretability)  
+* decision tree regression
+* random forest models
+* feature importance analysis
+* partial dependence plots
 
-\- Random Forest (predictive performance)  
+### 06 — Spatial Network Analysis
 
+* territorial adjacency graph
+* network centrality
+* spatial community detection
+* macro-regional structures
 
-Tools:
+---
 
-\- Feature importance  
+## Econometric Framework
 
-\- Partial Dependence Plots (PDP)  
+The econometric analysis includes:
 
-\---
+* pooled OLS,
+* time fixed effects,
+* region fixed effects,
+* quadratic temperature specifications.
 
-\## 📊 Results
+Non-linear temperature effects are estimated through:
+
+T^* = -\frac{\beta_1}{2\beta_2}
+
+---
+
+## Machine Learning Framework
+
+Implemented models include:
+
+* Decision Tree Regressor
+* Random Forest Regressor
+
+The analysis includes:
+
+* predictive performance evaluation,
+* feature importance analysis,
+* partial dependence visualization.
+
+---
+
+## Spatial Network Analysis
+
+The project additionally explores the relational organization of the European territorial system through a spatial adjacency network.
+
+Regions are represented as nodes, while territorial contiguity relationships define network edges.
+
+The network analysis investigates:
+
+* spatial connectivity,
+* intermediary territorial regions,
+* macro-regional community structures.
+
+---
+
+## Main Findings
+
+Main exploratory findings include:
+
+* Temperature exhibits a positive within-region relationship with tourism activity
+* Evidence of non-linearity appears in econometric specifications
+* Precipitation effects remain weak and unstable
+* GDP remains the dominant explanatory variable
+* Machine learning models suggest mostly monotonic temperature effects
+* No strong empirical evidence supports a systematic shift toward cooler destinations
+* Spatial network analysis reveals coherent European macro-regional structures
+
+Overall, climate conditions matter, but remain secondary to structural economic and territorial factors.
+
+---
+
+## Results
 
 Outputs available in:
 
+```text
 results/
-
+```
 
 Includes:
 
+* tourism distributions,
+* climate visualizations,
+* econometric outputs,
+* non-linear effect plots,
+* decision trees,
+* partial dependence plots,
+* spatial centrality maps,
+* community structure maps.
 
-\- Distribution plots  
+---
 
-\- Spatial maps  
+## Model Performance
 
-\- Temperature trend  
+### Random Forest
 
-\- Non-linear effects  
+* OOB R² ≈ 0.66
+* RMSE ≈ 2.44
 
-\- Decision tree segmentation  
+The predictive performance remains good, although tourism intensity is still largely dominated by economic indicators.
 
-\- Partial dependence plots  
+---
 
-\---
+## Project Structure
 
-\## 📈 Model Performance
-
-Random Forest:
-\- OOB R² ≈ 0.66  
-
-\- RMSE ≈ 2.44  
-
-Good predictive performance, but dominated by GDP
-
-\---
-
-\## 🧩 Project Structure
-
-CSS\_Climate-Tourism-Europe/HenriVasserot
-
-├── data/
-
-│ ├── raw/
-
-│ └── processed/
-
-│ └── final_dataset_nuts2_2010_2023.csv
-
+```text
+CSS_Climate-Tourism-Europe_HenriVasserot/
+│
 ├── code/
-
-│ ├── 01_data_eurostat.py
-
-│ ├── 02_data_climate.py
-
-│ ├── 03_build_dataset.py
-
-│ ├── 04_regression.py
-
-│ └── 05_machine_learning.py
-
+│   ├── 01_data_eurostat.ipynb
+│   ├── 02_data_climate.ipynb
+│   ├── 03_build_dataset.ipynb
+│   ├── 04_regression.ipynb
+│   ├── 05_machine_learning.ipynb
+│   └── 06_network_analysis.ipynb
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│       └── final_dataset_nuts2_2010_2023.csv
+│
 ├── results/
-
+│
 ├── paper/
-
-│ └── paper.pdf
-
+│   └── paper.pdf
+│
 ├── presentation/
-
-│ └── presentation.pdf
-
+│   └── presentation.pdf
+│
 ├── README.md
+├── requirements.txt
+└── .gitignore
+```
 
-└── requirements.txt
+---
 
+## Reproducibility
 
-Run pipeline:
+### Create virtual environment
 
-python code/01_data_eurostat.py
+```bash
+python -m venv .venv
+```
 
-python code/02_data_climate.py
+### Activate virtual environment
 
-python code/03_build_dataset.py
+```bash
+# Windows
+.venv\Scripts\activate
 
-python code/04_regression.py
+# Linux / macOS
+source .venv/bin/activate
+```
 
-python code/05_machine_learning.py
+### Install dependencies
 
+```bash
+pip install -r requirements.txt
+```
 
-Full article:
+---
 
-paper/paper.pdf
+## Run Analytical Pipeline
 
+```bash
+jupyter notebook
+```
 
+Then execute notebooks sequentially:
 
+1. 01_data_eurostat.ipynb
+2. 02_data_climate.ipynb
+3. 03_build_dataset.ipynb
+4. 04_regression.ipynb
+5. 05_machine_learning.ipynb
+6. 06_network_analysis.ipynb
 
+---
 
+## Technologies Used
 
+* Python
+* pandas
+* geopandas
+* xarray
+* statsmodels
+* scikit-learn
+* networkx
+* matplotlib
+* Eurostat API
+* ERA5 climate data
 
+---
 
+## Limitations
 
+The project remains exploratory and observational.
+
+Several limitations should be acknowledged:
+
+* incomplete climate uncertainty modeling,
+* limited causal identification,
+* annual aggregation effects,
+* heterogeneous regional tourism structures,
+* simplified territorial adjacency assumptions in network analysis.
+
+---
+
+## Future Work
+
+Potential future extensions include:
+
+* tourism flow networks,
+* causal inference strategies,
+* seasonal climate analysis,
+* advanced spatial econometric models,
+* dynamic network evolution,
+* forecasting models.
+
+---
+
+## Author
+
+Henri Vasserot
+MSc Data Science — University of Trento
+Computational Social Science (CAMPEDELLI)
