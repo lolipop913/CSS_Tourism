@@ -1,0 +1,12 @@
+pandas
+numpy
+matplotlib
+seaborn
+geopandas
+xarray
+statsmodels
+linearmodels
+scikit-learn
+eurostat
+cdsapi
+networkx
